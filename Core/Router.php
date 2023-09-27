@@ -3,7 +3,9 @@
 namespace App\Core;
 class Router
 {
-   public function __construct()
-   {
-   }
+    protected array $routes = [];
+    public function get($path,$callback)
+    {
+        $this->routes['get'][$path] = $callback;
+    }
 }
