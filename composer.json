@@ -1,0 +1,15 @@
+{
+    "name": "mahdi/php_mvc_framework",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mahdi",
+            "email": "rahmanimahdi16@gmail.com"
+        }
+    ],
+    "require": {}
+}
