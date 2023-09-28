@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'mahdi/php_mvc_framework',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '92306b01a897c7c7bb27a5918f691374d849b789',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'mahdi/php_mvc_framework' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '92306b01a897c7c7bb27a5918f691374d849b789',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
