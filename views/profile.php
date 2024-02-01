@@ -1,6 +1,4 @@
 <?php
-/** @var $this \thecodeholic\phpmvc\View */
-
 $this->title = 'Profile';
 ?>
 
