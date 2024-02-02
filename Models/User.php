@@ -18,7 +18,7 @@ class User extends DbModel
     public int $status = self::STATUS_INACTIVE;
 
 
-    public function tableName()
+    public static function tableName()
     {
         return 'users';
     }
@@ -34,13 +34,16 @@ class User extends DbModel
         return [
             'firstName' => [self::RULE_REQUIRED],
             'lastName' => [self::RULE_REQUIRED],
-            'email' => [self::RULE_EMAIL, self::RULE_REQUIRED],
+            'email' => [self::RULE_EMAIL, self::RULE_REQUIRED, [
+                self::RULE_UNIQUE ,'class' => self::class, 'attribute' => 'email'
+            ]
+            ],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN => '2'], [self::RULE_MAX => '8']],
-            'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH => 'password']]
+            'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH => 'password']],
         ];
     }
 
-    public function attributes()
+    public static function attributes()
     {
         return [
             'firstName',
