@@ -17,6 +17,7 @@ class User extends DbModel
     public string $confirmPassword = '';
     public int $status = self::STATUS_INACTIVE;
 
+
     public function tableName()
     {
         return 'users';
@@ -24,7 +25,7 @@ class User extends DbModel
 
     public function save()
     {
-        $this->password = password_hash($this->password,PASSWORD_DEFAULT);
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         return parent::save();
     }
 
@@ -46,7 +47,6 @@ class User extends DbModel
             'lastName',
             'email',
             'password',
-            'confirmPassword',
             'status'
         ];
     }

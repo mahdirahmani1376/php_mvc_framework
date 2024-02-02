@@ -11,7 +11,7 @@ abstract class DbModel extends Model
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
-        $params = array_map(fn($attribute) => ":$attributes", $attributes);
+        $params = array_map(fn($item) => ":$item", $attributes);
         $statement = self::prepare(
             "INSERT INTO $tableName (" .
             implode(',', $attributes).
