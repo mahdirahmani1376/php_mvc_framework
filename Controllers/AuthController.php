@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Application;
 use App\Core\Controller;
 use App\Core\Request;
 use App\Models\User;
@@ -26,9 +27,7 @@ class AuthController extends Controller
             $registerModel->loadData($request->getBody());
 
             if ($registerModel->validate() && $registerModel->save()){
-                return $this->render('register',[
-                   'model' => $registerModel
-                ]);
+                return Application::$app->response->redirect('/');
             }
         }
 
