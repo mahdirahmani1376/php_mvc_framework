@@ -53,4 +53,15 @@ class User extends DbModel
             'status'
         ];
     }
+
+    public function labels()
+    {
+        return [
+            'firstName' => 'First name',
+            'lastName' => 'Last name',
+            'email' => 'Email',
+            'password' => 'Password',
+            'passwordConfirm' => 'Confirm password',
+        ];
+    }
 }
