@@ -41,6 +41,11 @@ class Session
         $_SESSION[$key] = $value;
     }
 
+    public function remove($key)
+    {
+        unset($_SESSION[$key]);
+    }
+
     public function __destruct()
     {
         $flashMessages = $_SESSION[self::FLASH_KEY]?? [];

@@ -10,7 +10,9 @@ class Application
     public Controller $controller;
     public Database $db;
     public static Application $app;
+    public string $userClass;
     public Session $session;
+    public ?DbModel $user;
 
     public function __construct(
         string $rootPath,
@@ -24,6 +26,20 @@ class Application
         $this->db = new Database($config['db']);
         $this->session = new Session();
         self::$app = $this;
+        $this->userClass = $config['userClass'];
+
+        /** @var DbModel $primaryValue */
+        $primaryValue = $this->session->get('user');
+        if ($primaryValue){
+            $primaryKey = $this->userClass::primaryKey();
+            $this->userClass::findOne([$primaryKey => $primaryValue]);
+        }
+    }
+
+    public function logout()
+    {
+        $this->user = null;
+        $this->session->remove('user');
     }
 
     public function run()
@@ -39,5 +55,19 @@ class Application
     public function setController(Controller $controller): void
     {
         $this->controller = $controller;
+    }
+
+    public function isGuest()
+    {
+        return ! self::$app->user;
+    }
+
+    public function login(DbModel $user)
+    {
+        $this->user = $user;
+        $primaryKey = $user->primaryKey();
+        $primaryValue = $user->{$primaryKey};
+        $this->session->set('user', $primaryValue);
+        return true;
     }
 }

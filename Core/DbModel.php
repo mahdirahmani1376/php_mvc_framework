@@ -6,6 +6,7 @@ abstract class DbModel extends Model
 {
     abstract public static function tableName();
     abstract public static function attributes();
+    abstract public static function primaryKey();
 
     public function save()
     {
@@ -29,6 +30,19 @@ abstract class DbModel extends Model
         return true;
     }
 
+    public function findOne($where)
+    {
+        $tableName = static::tableName();
+        $attributes = array_keys($where);
+        $attributes = implode('AND',array_map(fn($item) => "$item = :$item", $attributes));
+        $sql = "SELECT * FROM $tableName WHERE $attributes";
+        $statement = self::prepare($sql);
+        foreach ($where as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+        $statement->execute();
+        return $statement->fetchObject(static::class);
+    }
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
