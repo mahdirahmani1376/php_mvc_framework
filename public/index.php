@@ -27,7 +27,9 @@ function dd(...$params)
     die();
 }
 
-
+$app->on(Application::EVENT_BEFORE_REQUEST,function (){
+    echo 'before event';
+});
 
 $app->router->get('/',[SiteController::class,'home']);
 $app->router->get('/contact','contact');
@@ -38,5 +40,6 @@ $app->router->post('/register',[AuthController::class,'register']);
 $app->router->get('/login',[AuthController::class,'login']);
 $app->router->post('/login',[AuthController::class,'login']);
 $app->router->get('/logout',[AuthController::class,'logout']);
+$app->router->get('/profile',[AuthController::class,'profile']);
 
 $app->run();

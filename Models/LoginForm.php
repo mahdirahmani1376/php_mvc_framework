@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Core\Application;
-use App\Core\DbModel;
 use App\Core\Model;
 
 class LoginForm extends Model

@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Core\DbModel;
-use App\Core\Model;
 use App\Core\UserModel;
 
 class User extends UserModel
@@ -72,7 +70,7 @@ class User extends UserModel
         return 'id';
     }
 
-    #[\Override] public function getDisplayName()
+    #[\Override] public function getDisplayName(): string
     {
         return $this->firstName. ' ' . $this->lastName;
     }
